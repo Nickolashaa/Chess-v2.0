@@ -1,4 +1,16 @@
-from Func import *
+WHITE = 1
+BLACK = 2
+
+
+def opponent(color):
+    if color == WHITE:
+        return BLACK
+    else:
+        return WHITE
+
+
+def correct_coords(row, col):
+    return 0 <= row < 8 and 0 <= col < 8
 
 
 class Rook:
@@ -11,7 +23,7 @@ class Rook:
         return self.color
 
     def char(self):
-        return 'R'
+        return '_Rook'
 
     def can_move(self, board, row, col, row1, col1):
         if row != row1 and col != col1:
@@ -43,7 +55,7 @@ class Pawn:
         return self.color
 
     def char(self):
-        return 'P'
+        return '_Pawn'
 
     def can_move(self, board, row, col, row1, col1):
         if col != col1:
@@ -80,7 +92,7 @@ class Knight:
         return self.color
 
     def char(self):
-        return 'N'
+        return '_Knight'
 
     def can_move(self, board, row, col, row1, col1):
         if not correct_coords(row1, col1) or not correct_coords(row, col):
@@ -118,7 +130,7 @@ class King:
         return self.color
 
     def char(self):
-        return 'K'
+        return '_King'
 
     def can_move(self, board, row, col, row1, col1):
         if not correct_coords(row1, col1) or not correct_coords(row, col):
@@ -160,7 +172,7 @@ class Queen:
         return self.color
 
     def char(self):
-        return 'Q'
+        return '_Queen'
 
     def can_move(self, board, row, col, row1, col1):
         ch = 'w' if self.color == WHITE else 'b'
@@ -208,7 +220,7 @@ class Bishop:
         return self.color
 
     def char(self):
-        return 'B'
+        return '_Bishop'
 
     def can_move(self, board, row, col, row1, col1):
         ch = 'w' if self.color == WHITE else 'b'

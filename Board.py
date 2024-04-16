@@ -1,6 +1,20 @@
-from Config import *
-#from Func import *
 from Figures import *
+import pygame
+
+
+WHITE = 1
+BLACK = 2
+
+
+def opponent(color):
+    if color == WHITE:
+        return BLACK
+    else:
+        return WHITE
+
+
+def correct_coords(row, col):
+    return 0 <= row < 8 and 0 <= col < 8
 
 
 class Board:
@@ -34,9 +48,9 @@ class Board:
     def cell(self, row, col):
         piece = self.field[row][col]
         if piece is None:
-            return '  '
+            return None
         color = piece.get_color()
-        c = 'w' if color == WHITE else 'b'
+        c = 'W' if color == WHITE else 'B'
         return c + piece.char()
 
     def get_piece(self, row, col):
@@ -99,7 +113,6 @@ class Board:
         if flag1 or flag2:
             self.field[row][col] = None
             self.field[row1][col1] = Queen(color)
-            self.color = opponent(self.color)
             return True
         return False
 
